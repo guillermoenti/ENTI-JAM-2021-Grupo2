@@ -7,15 +7,15 @@ public class MonkeyScript : MonoBehaviour
     Rigidbody2D rigidBody;
     BoxCollider2D boxCollider;
     Animator animator;
+
     [SerializeField] float thrust;
     [SerializeField] float speed;
     [SerializeField] float dashSpeed;
     [SerializeField] bool isJumping;
     [SerializeField] bool canJump;
     [SerializeField] bool oneMoreJump;
-
     [SerializeField] bool canDash;
-    public float dashCD;
+    [SerializeField] float dashCD;
 
     Vector2 axis;
     Vector2 movement;
@@ -29,6 +29,7 @@ public class MonkeyScript : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,8 +66,9 @@ public class MonkeyScript : MonoBehaviour
             dashCD += delta;
             if (dashCD > 0.3)
             {
-                speed = 4;
-                rigidBody.gravityScale = 5;
+                speed = 400;
+                CameraManager.CInstance.speed = 400;
+                rigidBody.gravityScale = 180;
             }
 
             if (dashCD > 2)
@@ -90,6 +92,7 @@ public class MonkeyScript : MonoBehaviour
 
     private void Dash()
     {
+        CameraManager.CInstance.speed = 600;
         speed = dashSpeed;
     }
 
