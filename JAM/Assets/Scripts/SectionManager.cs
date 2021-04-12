@@ -6,9 +6,9 @@ public class SectionManager : MonoBehaviour
 
     [Header("Game Objects")]
     [SerializeField] GameObject grid;
-    [SerializeField] GameObject section1_1;
-    [SerializeField] GameObject section1_2;
-    [SerializeField] GameObject section1_3;
+    [SerializeField] GameObject[] sections1;
+    [SerializeField] GameObject[] sections2;
+    [SerializeField] GameObject[] sections3;
 
     GameObject lastSection;
 
@@ -33,9 +33,9 @@ public class SectionManager : MonoBehaviour
     void Start()
     {
         count = 0;
-        Instantiate(section1_1, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
-        Instantiate(section1_2, new Vector3(2304, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
-        lastSection = Instantiate(section1_3, new Vector3(4608, 0, 0), Quaternion.Euler(0,0,0), grid.transform);
+        Instantiate(sections1[0], new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+        Instantiate(sections1[1], new Vector3(2304, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+        lastSection = Instantiate(sections1[2], new Vector3(4608, 0, 0), Quaternion.Euler(0,0,0), grid.transform);
     }
 
     // Update is called once per frame
@@ -52,19 +52,9 @@ public class SectionManager : MonoBehaviour
 
     GameObject ChooseNextSection()
     {
-        int randSection = Random.Range(1, 4);
+        int randSection = Random.Range(0, 3);
 
-        switch (randSection)
-        {
-            case 1:
-                return section1_1;
-            case 2:
-                return section1_2;
-            case 3:
-                return section1_3;
-            default:
-                return null;
-        }
+        return sections1[randSection];
     }
 
 }
