@@ -9,6 +9,7 @@ TagManager:
   - Peel
   - Guard
   - Tilemap
+  - Dash
   layers:
   - Default
   - TransparentFX

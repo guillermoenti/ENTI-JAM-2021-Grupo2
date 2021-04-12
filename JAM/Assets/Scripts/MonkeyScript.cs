@@ -9,17 +9,13 @@ public class MonkeyScript : MonoBehaviour
     Animator animator;
     [SerializeField] float thrust;
     [SerializeField] float speed;
+    [SerializeField] float dashSpeed;
     [SerializeField] bool isJumping;
     [SerializeField] bool canJump;
     [SerializeField] bool oneMoreJump;
 
     [SerializeField] bool canDash;
-    private GameObject limitdash;
-    public GameObject dashtrigger;
-    public LayerMask LayerDashLimit;
-    public float dashCD = 0;
-    public bool dashing;
-    public float dashspeed;
+    public float dashCD;
 
     Vector2 axis;
     Vector2 movement;
@@ -36,14 +32,18 @@ public class MonkeyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canDash = true;
         canJump = true;
         oneMoreJump = true;
         axis.x = 1;
+        dashCD = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        float delta = Time.deltaTime;
+
         if (Input.GetKeyDown(UpButton))
         {
             if (canJump)
@@ -60,42 +60,37 @@ public class MonkeyScript : MonoBehaviour
             }
         }
 
+        if (!canDash)
+        {
+            dashCD += delta;
+            if (dashCD > 0.3)
+            {
+                speed = 4;
+                rigidBody.gravityScale = 5;
+            }
+
+            if (dashCD > 2)
+            {
+                canDash = true;
+                dashCD = 0;
+            }
+        }
+
         if (Input.GetKeyDown(RightButton))
         {
             if (canDash)
             {
+                rigidBody.velocity = Vector2.zero;
+                rigidBody.gravityScale = 0;
+                canDash = false;
                 Dash();
             }
         }
-
-
     }
 
     private void Dash()
     {
-        float centery = (boxCollider.bounds.min.y + boxCollider.bounds.max.y) / 2;
-        Vector2 positioncenter = new Vector2(boxCollider.bounds.max.x, centery);
-        Vector2 positionup = new Vector2(boxCollider.bounds.max.x, boxCollider.bounds.max.y);
-        Vector2 positiondown = new Vector2(boxCollider.bounds.max.x, boxCollider.bounds.min.y);
-
-        RaycastHit2D hitscenter = Physics2D.Raycast(positioncenter, Vector2.right, 200, LayerDashLimit);
-        RaycastHit2D hitsup = Physics2D.Raycast(positionup, Vector2.right, 200, LayerDashLimit);
-        RaycastHit2D hitsdown = Physics2D.Raycast(positiondown, Vector2.right, 200, LayerDashLimit);
-        RaycastHit2D[] array = new RaycastHit2D[] { hitsup, hitscenter, hitsdown };
-
-        Vector2 LimitDashPosition = transform.position + transform.right * 200;
-        for (int i = 0; i < 3; i++)
-        {
-            if (array[i].collider != null && Vector2.Distance(array[i].point, this.transform.position) < Vector2.Distance(LimitDashPosition, this.transform.position))
-            {
-                LimitDashPosition = array[i].point;
-            }
-        }
-        limitdash = Instantiate(dashtrigger, LimitDashPosition, transform.rotation);
-
-        rigidBody.velocity = new Vector2(dashspeed, 0);
-
-        rigidBody.gravityScale = 0;
+        speed = dashSpeed;
     }
 
     private void Jump()
@@ -147,6 +142,11 @@ public class MonkeyScript : MonoBehaviour
             canJump = false;
             oneMoreJump = true;
         } 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
     }
 
     private bool CheckRaycastWithScenario(RaycastHit2D[] hits)
