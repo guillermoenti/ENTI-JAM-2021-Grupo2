@@ -34,4 +34,13 @@ public class CameraManager : MonoBehaviour
     {
         rigidBody.velocity = transform.right * speed;
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Section")
+        {
+            Destroy(collision.gameObject);
+            SectionManager.SInstance.InstantiateSection();
+        }
+    }
 }
