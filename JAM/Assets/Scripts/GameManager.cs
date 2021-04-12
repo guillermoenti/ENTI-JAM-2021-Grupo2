@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager GInstance { get; private set; }
 
+    public bool gameIsRunning;
     public float timeRemaining = 100;
     private bool timerIsRunning;
     public int metersRunned;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Warining: DisallowMultipleComponent " + this + " in scene!");
         }
         BinaryReader();
+        gameIsRunning = true;
     }
 
     // Start is called before the first frame update
@@ -40,18 +42,21 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (timerIsRunning)
+        if (gameIsRunning)
         {
-            if (timeRemaining > 0)
+            if (timerIsRunning)
             {
-                timeRemaining -= Time.deltaTime;
-                metersRunned++;
-            }
-            else
-            {
-                Debug.Log("Time finished");
-                timeRemaining = 0;
-                timerIsRunning = false;
+                if (timeRemaining > 0)
+                {
+                    timeRemaining -= Time.deltaTime;
+                    metersRunned++;
+                }
+                else
+                {
+                    Debug.Log("Time finished");
+                    timeRemaining = 0;
+                    timerIsRunning = false;
+                }
             }
         }
     }
@@ -97,6 +102,11 @@ public class GameManager : MonoBehaviour
     public bool GetTimerIsRunning()
     {
         return timerIsRunning;
+    }
+
+    public void AddMetersOnDash()
+    {
+        metersRunned += 5;
     }
 
 }
