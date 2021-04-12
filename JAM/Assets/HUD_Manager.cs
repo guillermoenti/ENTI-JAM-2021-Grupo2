@@ -3,66 +3,70 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+//using System.IO;
 
 public class HUD_Manager : MonoBehaviour
 {
+    //public static HUD_Manager HInstance { get; private set; }
+
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] TextMeshProUGUI meters;
 
-    public float timeRemaining = 100;
-    private bool timerIsRunning;
+    private void Awake()
+    {
+        /*if(HInstance = null)
+        {
+            HInstance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Debug.Log("Warning: multiple" + this + " in scene");
+        }*/
 
-    private float metersRunned = 0000;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        timerIsRunning = true;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timerIsRunning)
+        if (GameManager.GInstance.GetTimerIsRunning() && GameManager.GInstance.timeRemaining > 0)
         {
-            if(timeRemaining > 0)
-            {
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
-                metersRunned++;
-                DisplayMeters(metersRunned);
-            }
-            else
-            {
-                Debug.Log("Time finished");
-                timeRemaining = 0;
-                timerIsRunning = false;
-            }
+            DisplayTime(GameManager.GInstance.timeRemaining);
+            DisplayMeters(GameManager.GInstance.metersRunned);
         }
     }
 
-    void DisplayTime(float timeToDisplay)
+    void DisplayTime(float _timeToDisplay)
     {
-        timeToDisplay += 1;
+        _timeToDisplay += 1;
 
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        float minutes = Mathf.FloorToInt(_timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(_timeToDisplay % 60);
 
         timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    void DisplayMeters(float actualMeters)
+    void DisplayMeters(int _actualMeters)
     {
-        meters.text = string.Format("{0:0000}", Mathf.FloorToInt(actualMeters / 60));
+        meters.text = string.Format("{0:0000}", Mathf.FloorToInt(_actualMeters / 60));
     }
 
-    void AddTime(float timeAddition) 
+    void AddTime(float _timeAddition) 
     {
-        timeRemaining += timeAddition;
+        GameManager.GInstance.timeRemaining += _timeAddition;
     }
 
-    void SubtractTime(float timeSubtraction)
+    void SubtractTime(float _timeSubtraction)
     {
-        timeRemaining -= timeSubtraction;
+        GameManager.GInstance.timeRemaining -= _timeSubtraction;
     }
+
+
+
 }
