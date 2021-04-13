@@ -9,8 +9,8 @@ public class HUD_Manager : MonoBehaviour
 {
     //public static HUD_Manager HInstance { get; private set; }
 
-    [SerializeField] TextMeshProUGUI timer;
-    [SerializeField] TextMeshProUGUI meters;
+    [SerializeField] Text timer;
+    [SerializeField] Text meters;
 
     //int plusTime;
     //int plusMeters;
@@ -62,12 +62,12 @@ public class HUD_Manager : MonoBehaviour
         meters.text = string.Format("{0:0000}", Mathf.FloorToInt(_actualMeters / 60));
     }
 
-    void AddTime(float _timeAddition) 
+    public void AddTime(float _timeAddition) 
     {
         GameManager.GInstance.timeRemaining += _timeAddition;
     }
 
-    void SubtractTime(float _timeSubtraction)
+    public void SubtractTime(float _timeSubtraction)
     {
         GameManager.GInstance.timeRemaining -= _timeSubtraction;
     }

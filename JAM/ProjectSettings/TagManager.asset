@@ -7,10 +7,14 @@ TagManager:
   - Monkey
   - Banana
   - Peel
-  - Guard
   - Tilemap
   - Dash
   - Section
+  - Coco
+  - Bomb
+  - Moky
+  - Spawner
+  - CameraManager
   layers:
   - Default
   - TransparentFX

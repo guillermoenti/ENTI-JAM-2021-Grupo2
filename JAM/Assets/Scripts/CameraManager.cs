@@ -6,8 +6,12 @@ public class CameraManager : MonoBehaviour
 {
     public static CameraManager CInstance { get; private set; }
 
-    Rigidbody2D rigidBody;
-    public int speed;
+    [SerializeField] Camera Maincamera;
+    [SerializeField] Transform Monkey;
+
+    //Vector3 Camerapos;
+    //Vector3 Monkeypos;
+
 
     private void Awake()
     {
@@ -21,23 +25,23 @@ public class CameraManager : MonoBehaviour
             Debug.Log("Warining: DisallowMultipleComponent " + this + " in scene!");
         }
 
-        rigidBody = GetComponent<Rigidbody2D>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        rigidBody.velocity = transform.right * speed;
+        float Monkeypos = Monkey.transform.position.x;
+        Maincamera.transform.position = new Vector3 (Monkeypos + 300, 0.0f, -10.0f);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Section")
+        if (collision.gameObject.tag == "Section")
         {
             Destroy(collision.gameObject);
             SectionManager.SInstance.InstantiateSection();

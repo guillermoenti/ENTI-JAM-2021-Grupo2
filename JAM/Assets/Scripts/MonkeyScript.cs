@@ -62,7 +62,7 @@ public class MonkeyScript : MonoBehaviour
     {
         float delta = Time.deltaTime;
 
-        a_isCrashed = false;
+        //a_isCrashed = false;
         a_isBurned = false;
 
         if (Input.GetKeyDown(UpButton))
@@ -104,7 +104,7 @@ public class MonkeyScript : MonoBehaviour
             {
                 a_isDashing = false;
                 speed = 400;
-                CameraManager.CInstance.speed = 400;
+                //CameraManager.CInstance.speed = 400;
                 rigidBody.gravityScale = 180;
             }
 
@@ -167,7 +167,7 @@ public class MonkeyScript : MonoBehaviour
 
     private void Dash()
     {
-        CameraManager.CInstance.speed = 600;
+        //CameraManager.CInstance.speed = 600;
         speed = dashSpeed;
     }
 
@@ -181,6 +181,18 @@ public class MonkeyScript : MonoBehaviour
     {
         movement = new Vector2(axis.x * speed, rigidBody.velocity.y);
         rigidBody.velocity = movement;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Coco")
+        {
+            a_isCrashed = true;
+        }
+        else if (collision.gameObject.tag == "Bomb")
+        {
+            a_isBurned = true;
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -232,16 +244,19 @@ public class MonkeyScript : MonoBehaviour
         if (collision.gameObject.tag == "Banana")
         {
             Destroy(collision.gameObject);
+            //cambiar
             GameManager.GInstance.timeRemaining += 5;
         }
         else if (collision.gameObject.tag == "Peel")
         {
             Destroy(collision.gameObject);
+            //cambiar
             GameManager.GInstance.timeRemaining -= 5;
         }
-        else if (collision.gameObject.tag == "mona")
+        else if (collision.gameObject.tag == "Moky")
         {
             Destroy(collision.gameObject);
+            //cambiar
             GameManager.GInstance.timeRemaining += 15;
         }
 
