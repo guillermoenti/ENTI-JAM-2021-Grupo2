@@ -39,7 +39,8 @@ public class SectionManager : MonoBehaviour
         Instantiate(sections0[2], new Vector3(4608, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
         Instantiate(sections0[3], new Vector3(6912, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
         Instantiate(sections0[4], new Vector3(9216, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
-        lastSection = Instantiate(sections0[4], new Vector3(11520, 0, 0), Quaternion.Euler(0,0,0), grid.transform);
+        Instantiate(sections0[5], new Vector3(11520, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+        lastSection = Instantiate(sections0[6], new Vector3(13824, 0, 0), Quaternion.Euler(0,0,0), grid.transform);
     }
 
     // Update is called once per frame
