@@ -59,7 +59,7 @@ public class HUD_Manager : MonoBehaviour
 
     void DisplayMeters(float _actualMeters)
     {
-        float metersR = Mathf.FloorToInt(_actualMeters % 60 * multiplier);
+        float metersR = Mathf.FloorToInt(_actualMeters * multiplier);
         meters.text = string.Format("{0:0000}", metersR);
     }
 
