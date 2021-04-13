@@ -10,6 +10,14 @@ public class GameManager : MonoBehaviour
     public static GameManager GInstance { get; private set; }
     [SerializeField] Transform player;
 
+    //
+    [SerializeField] GameObject pausePanel;
+
+
+
+
+    //
+
     public bool gameIsRunning;
     public float timeRemaining = 100;
     private bool timerIsRunning;
@@ -30,13 +38,15 @@ public class GameManager : MonoBehaviour
             Debug.Log("Warining: DisallowMultipleComponent " + this + " in scene!");
         }
         BinaryReader();
-        gameIsRunning = true;
+
+        pausePanel.SetActive(false);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         metersRunned = 0000;
+        gameIsRunning = true;
         timerIsRunning = true;
     }
 
@@ -59,8 +69,34 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+           
+            if (!pausePanel.activeInHierarchy)
+            {
+                PauseGame();
+            }
+            if (pausePanel.activeInHierarchy)
+            {
+                ContinueGame();
+            }
+        }
+    }
+    private void PauseGame()
+    {
+        Time.timeScale = 0;
+        pausePanel.SetActive(true);
+        //Disable scripts that still work while timescale is set to 0
     }
 
+    private void ContinueGame()
+    {
+        Time.timeScale = 1;
+        pausePanel.SetActive(false);
+        //enable the scripts again
+    }
     public void BinaryWriter()
     {
         BinaryWriter writer = new BinaryWriter(File.Open(".Save/save.sav", FileMode.Create));

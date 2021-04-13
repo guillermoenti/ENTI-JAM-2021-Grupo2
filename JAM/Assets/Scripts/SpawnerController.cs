@@ -18,7 +18,6 @@ public class SpawnerController : MonoBehaviour
     private void Awake()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
-        Debug.Log(mainCamera);
     }
 
     // Start is called before the first frame update

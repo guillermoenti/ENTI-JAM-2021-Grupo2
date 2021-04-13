@@ -19,7 +19,7 @@ public class HUD_Manager : MonoBehaviour
 
     private void Awake()
     {
-        if (HInstance = null)
+        if (HInstance == null)
         {
             HInstance = this;
             DontDestroyOnLoad(this);
