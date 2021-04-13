@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
                 if (timeRemaining > 0)
                 {
                     timeRemaining -= Time.deltaTime;
-                    metersRunned++;
+                    metersRunned += Mathf.FloorToInt(Time.deltaTime);
                 }
                 else
                 {
