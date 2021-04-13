@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 951506669492184165}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -521, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5307479529870084771}
@@ -906,7 +906,7 @@ CompositeCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_GeometryType: 0
@@ -1137,7 +1137,7 @@ PrefabInstance:
     - target: {fileID: 4941463387274797543, guid: 1c941210546492c4b81a631b28fe1942,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -410.08643
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4941463387274797543, guid: 1c941210546492c4b81a631b28fe1942,
         type: 3}

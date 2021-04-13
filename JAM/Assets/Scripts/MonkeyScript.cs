@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MonkeyScript : MonoBehaviour
 {
     Rigidbody2D rigidBody;
-    BoxCollider2D boxCollider;
+    CapsuleCollider2D boxCollider;
     Animator animator;
 
     bool a_isUp;
@@ -36,7 +36,7 @@ public class MonkeyScript : MonoBehaviour
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        boxCollider = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
     }
 
@@ -236,6 +236,14 @@ public class MonkeyScript : MonoBehaviour
                 //else a_isDown = true;
             }
         }
+        if(collision.gameObject.tag == "Scenario")
+        {
+            canJump = true;
+            oneMoreJump = false;
+            a_isJumping = false;
+            a_isDoble = false;
+            a_isDown = false;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -244,7 +252,12 @@ public class MonkeyScript : MonoBehaviour
         {
             canJump = false;
             oneMoreJump = true;
-        } 
+        }
+        if (collision.gameObject.tag == "Scenario")
+        {
+            canJump = false;
+            oneMoreJump = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
