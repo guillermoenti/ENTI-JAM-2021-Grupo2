@@ -8,11 +8,12 @@ using System.IO;
 public class GameManager : MonoBehaviour
 {
     public static GameManager GInstance { get; private set; }
+    [SerializeField] Transform player;
 
     public bool gameIsRunning;
     public float timeRemaining = 100;
     private bool timerIsRunning;
-    public int metersRunned;
+    public float metersRunned;
 
     private List<int> records;
 
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour
                 if (timeRemaining > 0)
                 {
                     timeRemaining -= Time.deltaTime;
-                    metersRunned += Mathf.FloorToInt(Time.deltaTime);
+                    metersRunned += Time.deltaTime;
                 }
                 else
                 {
@@ -92,7 +93,7 @@ public class GameManager : MonoBehaviour
 
     private void SortAndPruge(ref List<int> _list)
     {
-        _list.Add(metersRunned);
+        _list.Add(Mathf.FloorToInt(metersRunned / 60));
         _list.Sort();
         _list.RemoveAt(0);
         _list.Reverse();

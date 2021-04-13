@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-//using System.IO;
+using System.IO;
 
 public class HUD_Manager : MonoBehaviour
 {
-    //public static HUD_Manager HInstance { get; private set; }
+    public static HUD_Manager HInstance { get; private set; }
 
     [SerializeField] Text timer;
     [SerializeField] Text meters;
+
+    public float multiplier;
 
     //int plusTime;
     //int plusMeters;
 
     private void Awake()
     {
-        /*if (HInstance = null)
+        if (HInstance = null)
         {
             HInstance = this;
             DontDestroyOnLoad(this);
@@ -25,14 +27,14 @@ public class HUD_Manager : MonoBehaviour
         else
         {
             Debug.Log("Warning: multiple" + this + " in scene");
-        }*/
+        }
 
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        multiplier = 1;
     }
 
     // Update is called once per frame
@@ -55,9 +57,10 @@ public class HUD_Manager : MonoBehaviour
         timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    void DisplayMeters(int _actualMeters)
+    void DisplayMeters(float _actualMeters)
     {
-        meters.text = string.Format("{0:0000}", Mathf.FloorToInt(_actualMeters / 60));
+        float metersR = Mathf.FloorToInt(_actualMeters % 60 * multiplier);
+        meters.text = string.Format("{0:0000}", metersR);
     }
 
     public void AddTime(float _timeAddition) 

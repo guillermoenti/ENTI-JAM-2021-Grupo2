@@ -24,6 +24,14 @@ public class SectionManager : MonoBehaviour
 
     [SerializeField] bool startTutorial;
 
+    private int[] lastsSectionsIDs;
+
+    public int counter;
+
+    private bool instanciate;
+    private int tenInstaniates;
+
+
     //float count;
 
     private void Awake()
@@ -37,6 +45,10 @@ public class SectionManager : MonoBehaviour
         {
             Debug.Log("Warining: DisallowMultipleComponent " + this + " in scene!");
         }
+        lastsSectionsIDs = new int[2];
+        counter = 0;
+        instanciate = false;
+        tenInstaniates = 10;
     }
 
     // Start is called before the first frame update
@@ -57,26 +69,65 @@ public class SectionManager : MonoBehaviour
         {
             Instantiate(sections0[0], new Vector3(0, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
             lastSection = Instantiate(sections0[1], new Vector3(2304, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+            
         }
+        lastsSectionsIDs[0] = 6;
+        lastsSectionsIDs[1] = sections0[5].GetComponent<Section>().sectionID;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (tenInstaniates <= 0)
+        {
+            counter = 0;
+            instanciate = false;
+            tenInstaniates = 10;
+        }
+        if (instanciate)
+        {
+            lastsSectionsIDs[0] = lastsSectionsIDs[1];
+            GameObject test = ChooseNextSection();
+            if (test == null)
+            {
+                return;
+            }
+            lastSection = Instantiate(test, new Vector3(lastSection.GetComponent<Transform>().position.x + 2304, -490, 0),
+                                      lastSection.transform.rotation, grid.transform);
+            lastsSectionsIDs[1] = lastSection.GetComponent<Section>().sectionID;
 
+            tenInstaniates--;
+        }
+        
     }
 
     public void InstantiateSection()
     {
-        lastSection = Instantiate(ChooseNextSection(), new Vector3(lastSection.GetComponent<Transform>().position.x + 2304, -490, 0),
-                                  lastSection.transform.rotation, grid.transform);
+        if(counter >= 5)
+        {
+
+            instanciate = true;
+        }
+        
     }
 
     GameObject ChooseNextSection()
     {
-        int randSection = Random.Range(0, sections1.Length);
+        bool validSection = false;
+        int randSection = -1;
 
-        return sections1[randSection];
+        randSection = Random.Range(0, sections1.Length);
+        Section actualSection = sections1[randSection].GetComponent<Section>();
+        if(lastsSectionsIDs[0] != actualSection.sectionID || lastsSectionsIDs[1] != actualSection.sectionID)
+        {
+            validSection = true;
+        }
+
+        if (validSection)
+        {
+            return sections1[randSection];
+        }
+        return null;
     }
 
 }
