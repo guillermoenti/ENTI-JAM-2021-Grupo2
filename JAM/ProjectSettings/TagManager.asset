@@ -15,6 +15,9 @@ TagManager:
   - Moky
   - Spawner
   - CameraManager
+  - Water
+  - Umbrella
+  - Float
   layers:
   - Default
   - TransparentFX

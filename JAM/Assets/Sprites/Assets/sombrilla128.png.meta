@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 365a8c794052c9e4d86ba332a988bc4b
+guid: 5a8ba19f80fd82944a459fdf475fbd9a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6507391753240350284
-    second: sombrilla64x64_0
+      213: -4258964070578580743
+    second: sombrilla128_0
   - first:
-      213: -6184782910297432519
-    second: sombrilla64x64_1
+      213: -4419015486184927348
+    second: sombrilla128_1
   - first:
-      213: 7329858589953520949
-    second: sombrilla64x64_2
+      213: -4238579363526461196
+    second: sombrilla128_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -96,13 +96,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sombrilla64x64_0
+      name: sombrilla128_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -110,41 +110,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b17dc59da911b5a0800000000000000
-      internalID: -6507391753240350284
+      spriteID: 9f213062ebe15e4c0800000000000000
+      internalID: -4258964070578580743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sombrilla64x64_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 93e90d226bc3b2aa0800000000000000
-      internalID: -6184782910297432519
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sombrilla64x64_2
+      name: sombrilla128_1
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,8 +131,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53576046d83e8b560800000000000000
-      internalID: 7329858589953520949
+      spriteID: c8f4ff804d08ca2c0800000000000000
+      internalID: -4419015486184927348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sombrilla128_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f834bc968a8d25c0800000000000000
+      internalID: -4238579363526461196
       vertices: []
       indices: 
       edges: []
