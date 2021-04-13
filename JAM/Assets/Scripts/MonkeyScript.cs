@@ -53,6 +53,7 @@ public class MonkeyScript : MonoBehaviour
     void Start()
     {
         a_isUp = false;
+        a_isUp2 = false;
         a_isJumping = false;
         a_isDoble = false;
         a_isDown = false;
@@ -77,14 +78,14 @@ public class MonkeyScript : MonoBehaviour
         float delta = Time.deltaTime;
 
         timer += delta;
-        if (timer > 15)
+        if (timer > 30)
         {
             Level1 = false;
             Level2 = true;
             a_isUp = true;
 
         }
-        else if (timer > 30)
+        if (timer > 100)
         {
             Level2 = false;
             Level3 = true;
