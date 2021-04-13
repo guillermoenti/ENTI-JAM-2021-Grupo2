@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
     {
         metersRunned = 0000;
         timerIsRunning = true;
-
     }
 
     void Update()

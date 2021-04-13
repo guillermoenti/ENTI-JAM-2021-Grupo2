@@ -322,6 +322,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monkey
       objectReference: {fileID: 0}
+    - target: {fileID: 3067458585015120251, guid: 1953830bef5bc484ea94c63f1a2ed434,
+        type: 3}
+      propertyPath: speed
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067458585015120251, guid: 1953830bef5bc484ea94c63f1a2ed434,
+        type: 3}
+      propertyPath: dashSpeed
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 3067458585577219414, guid: 1953830bef5bc484ea94c63f1a2ed434,
         type: 3}
       propertyPath: m_RootOrder
@@ -4392,6 +4402,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8155813789737217671, guid: 83e024e0df125cb498a6bb245a97f5e6,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1273093739}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83e024e0df125cb498a6bb245a97f5e6, type: 3}
 --- !u!114 &1864370986 stripped

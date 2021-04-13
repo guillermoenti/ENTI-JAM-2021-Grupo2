@@ -10,6 +10,7 @@ public class MonkeyScript : MonoBehaviour
     Animator animator;
 
     bool a_isUp;
+    bool a_isUp2;
     bool a_isJumping;
     bool a_isDoble;
     bool a_isDown;
@@ -26,6 +27,14 @@ public class MonkeyScript : MonoBehaviour
     [SerializeField] bool oneMoreJump;
     [SerializeField] bool canDash;
     [SerializeField] float dashCD;
+
+    float timer;
+
+    int newSpeed;
+
+    bool Level1;
+    bool Level2;
+    bool Level3;
 
     Vector2 axis;
     Vector2 movement;
@@ -55,6 +64,11 @@ public class MonkeyScript : MonoBehaviour
         oneMoreJump = true;
         axis.x = 1;
         dashCD = 0;
+        Level1 = true;
+        Level2 = false;
+        Level3 = false;
+        timer = 0;
+
     }
 
     // Update is called once per frame
@@ -62,7 +76,21 @@ public class MonkeyScript : MonoBehaviour
     {
         float delta = Time.deltaTime;
 
-        //a_isCrashed = false;
+        timer += delta;
+        if (timer > 15)
+        {
+            Level1 = false;
+            Level2 = true;
+            a_isUp = true;
+
+        }
+        else if (timer > 30)
+        {
+            Level2 = false;
+            Level3 = true;
+            a_isUp2 = true;
+        }
+
         if (a_isBurned)
         {
             rigidBody.velocity = Vector2.zero;
@@ -108,7 +136,10 @@ public class MonkeyScript : MonoBehaviour
             if (dashCD > 0.3)
             {
                 a_isDashing = false;
-                speed = 400;
+                if (Level1) { newSpeed = 400; }
+                else if (Level2) { newSpeed = 500; }
+                else if (Level3) { newSpeed = 600; }
+                speed = newSpeed;
                 //CameraManager.CInstance.speed = 400;
                 rigidBody.gravityScale = 180;
             }
@@ -133,6 +164,7 @@ public class MonkeyScript : MonoBehaviour
         }
 
         animator.SetBool("Up", a_isUp);
+        animator.SetBool("isUp2", a_isUp2);
         animator.SetBool("isJumping", a_isJumping);
         animator.SetBool("isDoble", a_isDoble);
         animator.SetBool("isDown", a_isDown);
@@ -179,6 +211,9 @@ public class MonkeyScript : MonoBehaviour
     private void Dash()
     {
         //CameraManager.CInstance.speed = 600;
+        if (Level1) dashSpeed = 600;
+        else if (Level2) dashSpeed = 700;
+        else if (Level3) dashSpeed = 800;
         speed = dashSpeed;
     }
 
@@ -203,6 +238,11 @@ public class MonkeyScript : MonoBehaviour
         else if (collision.gameObject.tag == "Bomb")
         {
             a_isBurned = true;
+        }
+        else if (collision.gameObject.tag == "Bouncer")
+        {
+            a_isJumping = true;
+            a_isDown = false;
         }
     }
 
