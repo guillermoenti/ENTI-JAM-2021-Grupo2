@@ -5,13 +5,18 @@ using UnityEngine;
 public class SpawnerController : MonoBehaviour
 {
     [SerializeField] GameObject[] Mensajes;
-    [SerializeField] Transform mainCamera;
+    Transform mainCamera;
 
     GameObject Mensaje;
 
     BoxCollider2D boxCollider;
 
     float timer;
+
+    private void Awake()
+    {
+        mainCamera = GameObject.Find("MainCamera").GetComponent<Transform>();
+    }
 
     // Start is called before the first frame update
     void Start()

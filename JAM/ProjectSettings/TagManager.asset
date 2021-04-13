@@ -18,6 +18,7 @@ TagManager:
   - Water
   - Umbrella
   - Float
+  - Control
   layers:
   - Default
   - TransparentFX

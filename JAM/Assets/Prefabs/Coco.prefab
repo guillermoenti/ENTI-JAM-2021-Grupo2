@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8693240302100240109}
   - component: {fileID: 8693240302100240104}
   - component: {fileID: 8693240302100240111}
+  - component: {fileID: 1674453826}
   m_Layer: 0
   m_Name: Coco
   m_TagString: Coco
@@ -120,3 +121,22 @@ CapsuleCollider2D:
   m_Offset: {x: -0.013414383, y: -31.918232}
   m_Size: {x: 29.86018, y: 32.163536}
   m_Direction: 0
+--- !u!95 &1674453826
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8693240302100240108}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5834585070dfc674e802324a69e37c42, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
