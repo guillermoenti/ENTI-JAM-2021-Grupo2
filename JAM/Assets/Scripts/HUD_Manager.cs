@@ -12,9 +12,12 @@ public class HUD_Manager : MonoBehaviour
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] TextMeshProUGUI meters;
 
+    //int plusTime;
+    //int plusMeters;
+
     private void Awake()
     {
-        /*if(HInstance = null)
+        /*if (HInstance = null)
         {
             HInstance = this;
             DontDestroyOnLoad(this);
@@ -40,6 +43,8 @@ public class HUD_Manager : MonoBehaviour
             DisplayTime(GameManager.GInstance.timeRemaining);
             DisplayMeters(GameManager.GInstance.metersRunned);
         }
+
+
     }
 
     void DisplayTime(float _timeToDisplay)

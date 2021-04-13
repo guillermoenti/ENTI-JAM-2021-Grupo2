@@ -229,7 +229,23 @@ public class MonkeyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.tag == "Banana")
+        {
+            Destroy(collision.gameObject);
+            GameManager.GInstance.timeRemaining += 5;
+        }
+        else if (collision.gameObject.tag == "Peel")
+        {
+            Destroy(collision.gameObject);
+            GameManager.GInstance.timeRemaining -= 5;
+        }
+        else if (collision.gameObject.tag == "mona")
+        {
+            Destroy(collision.gameObject);
+            GameManager.GInstance.timeRemaining += 15;
+        }
+
+
     }
 
     private bool CheckRaycastWithScenario(RaycastHit2D[] hits)
