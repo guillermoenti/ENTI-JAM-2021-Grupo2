@@ -43,8 +43,6 @@ public class HUD_Manager : MonoBehaviour
             DisplayTime(GameManager.GInstance.timeRemaining);
             DisplayMeters(GameManager.GInstance.metersRunned);
         }
-
-
     }
 
     void DisplayTime(float _timeToDisplay)

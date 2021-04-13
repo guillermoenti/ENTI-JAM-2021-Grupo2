@@ -193,6 +193,8 @@ public class MonkeyScript : MonoBehaviour
         {
             a_isBurned = true;
         }
+        
+
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -259,8 +261,10 @@ public class MonkeyScript : MonoBehaviour
             //cambiar
             GameManager.GInstance.timeRemaining += 15;
         }
-
-
+        else if (collision.gameObject.tag == "Water")
+        {
+            a_isCrashed = true;
+        }
     }
 
     private bool CheckRaycastWithScenario(RaycastHit2D[] hits)
