@@ -135,6 +135,12 @@ public class MonkeyScript : MonoBehaviour
         animator.SetBool("isCrashed", a_isCrashed);
         animator.SetBool("StillCrashed", a_StillCrashed);
         animator.SetBool("isBurned", a_isBurned);
+
+        if(rigidBody.velocity.y > 1000)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, 1000);
+        }
+
     }
 
     private void CheckGameOver()

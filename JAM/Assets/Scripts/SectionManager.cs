@@ -6,6 +6,7 @@ public class SectionManager : MonoBehaviour
 
     [Header("Game Objects")]
     [SerializeField] GameObject grid;
+    [SerializeField] GameObject[] sections0;
     [SerializeField] GameObject[] sections1;
     [SerializeField] GameObject[] sections2;
     [SerializeField] GameObject[] sections3;
@@ -33,9 +34,13 @@ public class SectionManager : MonoBehaviour
     void Start()
     {
         count = 0;
-        Instantiate(sections1[0], new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
-        Instantiate(sections1[1], new Vector3(2304, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
-        lastSection = Instantiate(sections1[2], new Vector3(4608, 0, 0), Quaternion.Euler(0,0,0), grid.transform);
+        Instantiate(sections0[0], new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+        Instantiate(sections0[1], new Vector3(2304, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+        Instantiate(sections0[2], new Vector3(4608, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+        Instantiate(sections0[3], new Vector3(6912, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+        Instantiate(sections0[4], new Vector3(9216, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+        Instantiate(sections0[5], new Vector3(11520, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+        lastSection = Instantiate(sections0[6], new Vector3(13824, 0, 0), Quaternion.Euler(0,0,0), grid.transform);
     }
 
     // Update is called once per frame
