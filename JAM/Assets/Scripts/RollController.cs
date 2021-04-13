@@ -6,7 +6,7 @@ public class RollController : MonoBehaviour
 {
     Rigidbody2D rigidBody;
 
-    int speed;
+    [SerializeField] float speed;
 
     private void Awake()
     {
@@ -16,12 +16,12 @@ public class RollController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //speed = 
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.Rotate(0, 0, -0.2f);
+        this.transform.Rotate(0, 0, speed);
     }
 }
