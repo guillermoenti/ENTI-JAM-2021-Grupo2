@@ -45,6 +45,9 @@ public class CameraManager : MonoBehaviour
         {
             Destroy(collision.gameObject);
             SectionManager.SInstance.InstantiateSection();
+            SectionManager.SInstance.counter++;
         }
     }
+
+
 }

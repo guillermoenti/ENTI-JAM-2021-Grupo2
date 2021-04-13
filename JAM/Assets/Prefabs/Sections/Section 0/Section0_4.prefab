@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 903592796896109443}
   - component: {fileID: 903592796896109442}
   - component: {fileID: 903592796896109441}
+  - component: {fileID: -562871642185620216}
   m_Layer: 0
   m_Name: Section0_4
   m_TagString: Tilemap
@@ -981,6 +982,21 @@ CompositeCollider2D:
       - {x: -767.99994, y: 128}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!114 &-562871642185620216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903592796896109447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31bdd3b2665a34c45987371bc157e4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sectionID: 5
+  leftID: 0
+  rightID: 0
 --- !u!1 &903592798227383007
 GameObject:
   m_ObjectHideFlags: 0
