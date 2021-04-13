@@ -153,4 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213cb00f1b676cf44b957c083170068c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Monkey: {fileID: 0}
+  Monkey: {fileID: 3067458585577219414, guid: 1953830bef5bc484ea94c63f1a2ed434, type: 3}

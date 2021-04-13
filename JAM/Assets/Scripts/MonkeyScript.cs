@@ -72,7 +72,7 @@ public class MonkeyScript : MonoBehaviour
 
         if (Input.GetKeyDown(UpButton))
         {
-            if (canJump)
+            if (canJump) 
             {
                 a_StillCrashed = false;
                 a_isJumping = true;

@@ -5,12 +5,13 @@ using UnityEngine;
 public class CocoBombController : MonoBehaviour
 {
     Animator animator;
-    [SerializeField] Transform Monkey;
+    Transform Monkey;
     int radius = 500;
     bool noChill;
 
     private void Awake()
     {
+        Monkey = GameObject.Find("Monkey").GetComponent<Transform>();
         animator = GetComponent<Animator>();
     }
 
