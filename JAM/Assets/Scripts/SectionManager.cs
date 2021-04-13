@@ -15,7 +15,7 @@ public class SectionManager : MonoBehaviour
 
     CompositeCollider2D lastSectionCll;
 
-    float count;
+    //float count;
 
     private void Awake()
     {
@@ -33,7 +33,7 @@ public class SectionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        count = 0;
+        //count = 0;
         Instantiate(sections0[0], new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
         Instantiate(sections0[1], new Vector3(2304, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);
         Instantiate(sections0[2], new Vector3(4608, 0, 0), Quaternion.Euler(0, 0, 0), grid.transform);

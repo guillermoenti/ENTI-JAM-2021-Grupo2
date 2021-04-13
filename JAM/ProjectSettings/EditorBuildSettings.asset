@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Nueva.unity
+    path: Assets/Scenes/Credits.unity
     guid: de9035668be6e844c8c67cbd33e4ac7d
   - enabled: 1
     path: Assets/Scenes/Game.unity
