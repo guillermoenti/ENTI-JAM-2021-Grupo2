@@ -773,7 +773,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Artist:
+  m_Text: 'Artists:
 
 
 
@@ -1520,7 +1520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147fcafba74a9e64c85afa35d727af6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 150
   quiet: 0
 --- !u!212 &1980304124
 SpriteRenderer:
