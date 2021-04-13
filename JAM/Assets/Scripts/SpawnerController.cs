@@ -13,26 +13,32 @@ public class SpawnerController : MonoBehaviour
 
     float timer;
 
+    bool isActive;
+
     private void Awake()
     {
-        mainCamera = GameObject.Find("MainCamera").GetComponent<Transform>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
+        Debug.Log(mainCamera);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         timer = 0;
+        isActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        timer += Time.deltaTime;
-        if (timer > 3)
+        if (isActive)
         {
-            Destroy(Mensaje);
-            Destroy(this.gameObject);
+            timer += Time.deltaTime;
+            if (timer > 3)
+            {
+                Destroy(Mensaje);
+                Destroy(this.gameObject);
+            }
         }
 
     }
@@ -41,6 +47,7 @@ public class SpawnerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "CameraManager")
         {
+            isActive = true;
             int rand = Random.Range(0, 3);
             Mensaje = Instantiate(Mensajes[rand], new Vector3(transform.position.x - 150, transform.position.y, transform.position.z), transform.rotation, mainCamera);
             

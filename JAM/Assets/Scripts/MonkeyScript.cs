@@ -236,6 +236,14 @@ public class MonkeyScript : MonoBehaviour
                 //else a_isDown = true;
             }
         }
+        if(collision.gameObject.tag == "Scenario")
+        {
+            canJump = true;
+            oneMoreJump = false;
+            a_isJumping = false;
+            a_isDoble = false;
+            a_isDown = false;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -244,7 +252,12 @@ public class MonkeyScript : MonoBehaviour
         {
             canJump = false;
             oneMoreJump = true;
-        } 
+        }
+        if (collision.gameObject.tag == "Scenario")
+        {
+            canJump = false;
+            oneMoreJump = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
