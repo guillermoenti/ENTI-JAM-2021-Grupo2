@@ -36,12 +36,12 @@ public class CameraManager : MonoBehaviour
     void Update()
     {
         float Monkeypos = Monkey.transform.position.x;
-        Maincamera.transform.position = new Vector3 (Monkeypos + 300, 0.0f, -10.0f);
+        Maincamera.transform.position = new Vector3 (Monkeypos + 300, 510.0f, -10.0f);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Section")
+        if (collision.gameObject.tag == "Tilemap")
         {
             Destroy(collision.gameObject);
             SectionManager.SInstance.InstantiateSection();
