@@ -44,7 +44,7 @@ public class CameraManager : MonoBehaviour
         if (collision.gameObject.tag == "Tilemap")
         {
             Destroy(collision.gameObject);
-            //SectionManager.SInstance.InstantiateSection();
+            SectionManager.SInstance.InstantiateSection();
         }
     }
 }

@@ -63,7 +63,12 @@ public class MonkeyScript : MonoBehaviour
         float delta = Time.deltaTime;
 
         //a_isCrashed = false;
-        a_isBurned = false;
+        if (a_isBurned)
+        {
+            rigidBody.velocity = Vector2.zero;
+            rigidBody.gravityScale = 2000;
+            axis.x = 0;
+        }
 
         if (Input.GetKeyDown(UpButton))
         {
@@ -199,8 +204,6 @@ public class MonkeyScript : MonoBehaviour
         {
             a_isBurned = true;
         }
-        
-
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -236,7 +239,7 @@ public class MonkeyScript : MonoBehaviour
                 //else a_isDown = true;
             }
         }
-        if(collision.gameObject.tag == "Scenario")
+        else if(collision.gameObject.tag == "Scenario")
         {
             canJump = true;
             oneMoreJump = false;
