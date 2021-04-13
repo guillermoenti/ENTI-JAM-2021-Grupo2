@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MonkeyScript : MonoBehaviour
 {
     Rigidbody2D rigidBody;
-    BoxCollider2D boxCollider;
+    CapsuleCollider2D boxCollider;
     Animator animator;
 
     bool a_isUp;
@@ -36,7 +36,7 @@ public class MonkeyScript : MonoBehaviour
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        boxCollider = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
     }
 

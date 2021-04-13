@@ -6,6 +6,13 @@ public class SectionManager : MonoBehaviour
 
     [Header("Game Objects")]
     [SerializeField] GameObject grid;
+    /*[SerializeField] struct section
+    {
+        GameObject sectionObject;
+        int ID_left;
+        int ID_right;
+    };
+    [SerializeField] section[] sections;*/
     [SerializeField] GameObject[] sections0;
     [SerializeField] GameObject[] sections1;
     [SerializeField] GameObject[] sections2;
