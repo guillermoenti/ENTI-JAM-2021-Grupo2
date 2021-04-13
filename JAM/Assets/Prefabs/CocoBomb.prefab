@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 889735312078394615}
   m_Layer: 0
   m_Name: CocoBomb
-  m_TagString: Coco
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,3 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213cb00f1b676cf44b957c083170068c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Monkey: {fileID: 0}
