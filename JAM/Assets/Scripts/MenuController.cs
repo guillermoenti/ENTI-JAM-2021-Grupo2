@@ -42,7 +42,7 @@ public class MenuController : MonoBehaviour
                     SceneManager.LoadScene("Game");
                     break;
                 case 1:
-                    // SONIDO
+                    SceneManager.LoadScene("Options");
                     break;
                 case 2:
                     SceneManager.LoadScene("Credits");

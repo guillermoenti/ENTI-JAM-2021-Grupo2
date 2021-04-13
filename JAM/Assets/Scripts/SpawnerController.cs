@@ -15,7 +15,7 @@ public class SpawnerController : MonoBehaviour
 
     private void Awake()
     {
-        mainCamera = GameObject.Find("MainCamera").GetComponent<Transform>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
     }
 
     // Start is called before the first frame update
@@ -29,7 +29,7 @@ public class SpawnerController : MonoBehaviour
     {
 
         timer += Time.deltaTime;
-        if (timer > 3)
+        if (timer > 5)
         {
             Destroy(Mensaje);
             Destroy(this.gameObject);
