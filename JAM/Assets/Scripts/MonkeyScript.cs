@@ -164,6 +164,7 @@ public class MonkeyScript : MonoBehaviour
             }
         }
 
+
         animator.SetBool("Up", a_isUp);
         animator.SetBool("isUp2", a_isUp2);
         animator.SetBool("isJumping", a_isJumping);
@@ -200,14 +201,14 @@ public class MonkeyScript : MonoBehaviour
         hits = Physics2D.RaycastAll(downtPosition, Vector2.right, 2f);
         if (CheckRaycastWithScenario(hits)) { col3 = true; }
 
-        if (col1 || col2 || col3) { a_isCrashed = true; SoundManager.PlaySound("Crashsound"); }
+        if (col1 || col2 || col3) { a_isCrashed = true; }
     }
 
     private void GameOver() {
         SceneManager.LoadScene("GameOver");
     }
 
-    private void StillCrashed() { a_StillCrashed = true; }
+    private void StillCrashed() { a_StillCrashed = true; SoundManager.PlaySound("Crashsound"); }
 
     private void Dash()
     {
