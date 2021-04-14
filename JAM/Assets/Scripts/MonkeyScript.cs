@@ -78,14 +78,14 @@ public class MonkeyScript : MonoBehaviour
         float delta = Time.deltaTime;
 
         timer += delta;
-        if (timer > 30)
+        if (timer > 18)
         {
             Level1 = false;
             Level2 = true;
             a_isUp = true;
 
         }
-        if (timer > 100)
+        if (timer > 36)
         {
             Level2 = false;
             Level3 = true;
@@ -137,9 +137,9 @@ public class MonkeyScript : MonoBehaviour
             if (dashCD > 0.3)
             {
                 a_isDashing = false;
-                if (Level1) { newSpeed = 400; }
-                else if (Level2) { newSpeed = 500; }
-                else if (Level3) { newSpeed = 600; }
+                if (Level1) { newSpeed = 500; }
+                else if (Level2) { newSpeed = 600; }
+                else if (Level3) { newSpeed = 700; }
                 speed = newSpeed;
                 //CameraManager.CInstance.speed = 400;
                 rigidBody.gravityScale = 180;
@@ -200,7 +200,7 @@ public class MonkeyScript : MonoBehaviour
         hits = Physics2D.RaycastAll(downtPosition, Vector2.right, 2f);
         if (CheckRaycastWithScenario(hits)) { col3 = true; }
 
-        if (col1 || col2 || col3) { a_isCrashed = true; }
+        if (col1 || col2 || col3) { a_isCrashed = true; SoundManager.PlaySound("Crashsound"); }
     }
 
     private void GameOver() {
@@ -211,10 +211,11 @@ public class MonkeyScript : MonoBehaviour
 
     private void Dash()
     {
+        SoundManager.PlaySound("Dashsound");
         //CameraManager.CInstance.speed = 600;
-        if (Level1) dashSpeed = 600;
-        else if (Level2) dashSpeed = 700;
-        else if (Level3) dashSpeed = 800;
+        if (Level1) dashSpeed = 700;
+        else if (Level2) dashSpeed = 800;
+        else if (Level3) dashSpeed = 900;
         speed = dashSpeed;
     }
 
@@ -234,10 +235,12 @@ public class MonkeyScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Coco")
         {
+            SoundManager.PlaySound("Crashsound");
             a_isCrashed = true;
         }
         else if (collision.gameObject.tag == "Bomb")
         {
+            SoundManager.PlaySound("Burned");
             a_isBurned = true;
         }
         else if (collision.gameObject.tag == "Bouncer")
@@ -308,18 +311,21 @@ public class MonkeyScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Banana")
         {
+            SoundManager.PlaySound("TimeUpsound");
             Destroy(collision.gameObject);
             //cambiar
             GameManager.GInstance.timeRemaining += 5;
         }
         else if (collision.gameObject.tag == "Peel")
         {
+            SoundManager.PlaySound("TimeDownsound");
             Destroy(collision.gameObject);
             //cambiar
             GameManager.GInstance.timeRemaining -= 5;
         }
         else if (collision.gameObject.tag == "Moky")
         {
+            SoundManager.PlaySound("TimeUpsound");
             Destroy(collision.gameObject);
             //cambiar
             GameManager.GInstance.timeRemaining += 15;
