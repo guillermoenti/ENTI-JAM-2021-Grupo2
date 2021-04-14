@@ -13,6 +13,9 @@ public class GameOverController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Destroy(SectionManager.SInstance.gameObject);
+        Destroy(GameManager.GInstance.gameObject);
+
         gameObject.transform.position = new Vector2(0, -100);
         menuoptions = 0;
     }
@@ -39,6 +42,8 @@ public class GameOverController : MonoBehaviour
             switch (menuoptions)
             {
                 case 0:
+                    //GameManager.GInstance.metersRunned = 0000;
+                    //GameManager.GInstance.timeRemaining = 100;
                     SceneManager.LoadScene("Game");
                     break;
                 case 1:

@@ -7,7 +7,7 @@ using System.IO;
 
 public class HUD_Manager : MonoBehaviour
 {
-    public static HUD_Manager HInstance { get; private set; }
+    //public static HUD_Manager HInstance { get; private set; }
 
     [SerializeField] Text timer;
     [SerializeField] Text meters;
@@ -19,7 +19,7 @@ public class HUD_Manager : MonoBehaviour
 
     private void Awake()
     {
-        if (HInstance == null)
+        /*if (HInstance == null)
         {
             HInstance = this;
             DontDestroyOnLoad(this);
@@ -27,7 +27,7 @@ public class HUD_Manager : MonoBehaviour
         else
         {
             Debug.Log("Warning: multiple" + this + " in scene");
-        }
+        }*/
 
     }
 
