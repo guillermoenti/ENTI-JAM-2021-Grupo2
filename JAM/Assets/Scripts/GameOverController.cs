@@ -15,9 +15,6 @@ public class GameOverController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(SectionManager.SInstance.gameObject);
-        Destroy(GameManager.GInstance.gameObject);
-
         gameObject.transform.position = new Vector2(0, -100);
         menuoptions = 0;
 
@@ -29,6 +26,7 @@ public class GameOverController : MonoBehaviour
     {
         if (Input.GetKeyDown(upButton))
         {
+            SoundManager.PlaySound("Clicksound");
             menuoptions--;
 
             if (menuoptions < 0) { menuoptions = 1; }
@@ -36,6 +34,7 @@ public class GameOverController : MonoBehaviour
         }
         else if (Input.GetKeyDown(downButton))
         {
+            SoundManager.PlaySound("Clicksound");
             menuoptions++;
 
             if (menuoptions > 1) { menuoptions = 0; }
@@ -43,14 +42,23 @@ public class GameOverController : MonoBehaviour
         }
         else if (Input.GetKeyDown(select))
         {
+            SoundManager.PlaySound("Clicksound");
             switch (menuoptions)
             {
                 case 0:
-                    //GameManager.GInstance.metersRunned = 0000;
-                    //GameManager.GInstance.timeRemaining = 100;
+                    if (SectionManager.SInstance != null && GameManager.GInstance != null)
+                    {
+                        Destroy(SectionManager.SInstance.gameObject);
+                        Destroy(GameManager.GInstance.gameObject);
+                    }
+                    else if (SoundManager.SoInstance != null)
+                    {
+                        Destroy(SoundManager.SoInstance.gameObject);
+                    }
                     SceneManager.LoadScene("Game");
                     break;
                 case 1:
+                    Destroy(SoundManager.SoInstance.gameObject);
                     SceneManager.LoadScene("MainMenu");
                     break;
             }

@@ -24,7 +24,18 @@ public class CreditsObject : MonoBehaviour
         {
             rigidBody.velocity = Vector3.zero;
             esc += Time.deltaTime;
-            if (esc > 2) { SceneManager.LoadScene("MainMenu"); }
+            if (esc > 2) {
+                if (SectionManager.SInstance != null && GameManager.GInstance != null)
+                {
+                    Destroy(SectionManager.SInstance.gameObject);
+                    Destroy(GameManager.GInstance.gameObject);
+                }
+                else if (SoundManager.SoInstance != null)
+                {
+                    Destroy(SoundManager.SoInstance.gameObject);
+                }
+                SceneManager.LoadScene("MainMenu"); 
+            }
         }
     }
 
