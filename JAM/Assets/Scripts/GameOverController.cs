@@ -10,11 +10,15 @@ public class GameOverController : MonoBehaviour
     KeyCode downButton = KeyCode.DownArrow;
     KeyCode select = KeyCode.Space;
 
+    private List<int> records;
+
     // Start is called before the first frame update
     void Start()
     {
         gameObject.transform.position = new Vector2(0, -100);
         menuoptions = 0;
+
+        records = GameManager.GInstance.getRecords();
     }
 
     // Update is called once per frame

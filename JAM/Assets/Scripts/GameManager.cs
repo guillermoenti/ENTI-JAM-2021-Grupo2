@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     //
     [SerializeField] GameObject pausePanel;
 
-
+    [SerializeField] float multiplier;
 
 
     //
@@ -37,8 +37,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Warining: DisallowMultipleComponent " + this + " in scene!");
         }
+        records = new List<int>();
+        records.Add(0);
+        records.Add(0);
+        records.Add(0);
         BinaryReader();
-
         pausePanel.SetActive(false);
     }
 
@@ -121,18 +124,24 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < 3; i++)
         {
             int score = reader.ReadInt32();
-            records.Add(score);
+            records[i] = score;
         }
         reader.Close();
     }
 
-    private void SortAndPruge(ref List<int> _list)
+    private void SortAndPruge()
     {
-        _list.Add(Mathf.FloorToInt(metersRunned / 60));
-        _list.Sort();
-        _list.RemoveAt(0);
-        _list.Reverse();
+        records.Add(Mathf.FloorToInt(metersRunned * multiplier));
+        records.Sort();
+        records.RemoveAt(0);
+        records.Reverse();
 
+    }
+
+    public List<int> getRecords()
+    {
+        SortAndPruge();
+        return records;
     }
 
     public bool GetTimerIsRunning()
