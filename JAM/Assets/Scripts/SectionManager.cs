@@ -13,10 +13,8 @@ public class SectionManager : MonoBehaviour
         int ID_right;
     };
     [SerializeField] section[] sections;*/
-    [SerializeField] GameObject[] sections0;
-    [SerializeField] GameObject[] sections1;
-    [SerializeField] GameObject[] sections2;
-    [SerializeField] GameObject[] sections3;
+    [SerializeField] GameObject firstSection;
+    [SerializeField] GameObject[] sections;
 
     GameObject lastSection;
 
@@ -57,22 +55,23 @@ public class SectionManager : MonoBehaviour
         //count = 0;
         if (startTutorial)
         {
-            Instantiate(sections0[0], new Vector3(0, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
-            Instantiate(sections0[1], new Vector3(2304, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
-            Instantiate(sections0[2], new Vector3(4608, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
-            Instantiate(sections0[3], new Vector3(6912, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
-            Instantiate(sections0[4], new Vector3(9216, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
-            Instantiate(sections0[5], new Vector3(11520, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
-            lastSection = Instantiate(sections0[6], new Vector3(13824, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+            Instantiate(firstSection, new Vector3(0, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+            Instantiate(sections[0], new Vector3(2304, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+            Instantiate(sections[1], new Vector3(4608, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+            Instantiate(sections[2], new Vector3(6912, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+            Instantiate(sections[3], new Vector3(9216, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+            Instantiate(sections[4], new Vector3(11520, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+            Instantiate(sections[5], new Vector3(13824, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+            lastSection = Instantiate(sections[6], new Vector3(16128, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
         }
         else
         {
-            Instantiate(sections0[0], new Vector3(0, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
-            lastSection = Instantiate(sections0[1], new Vector3(2304, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+            Instantiate(sections[0], new Vector3(0, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
+            lastSection = Instantiate(sections[1], new Vector3(2304, -490, 0), Quaternion.Euler(0, 0, 0), grid.transform);
             
         }
         lastsSectionsIDs[0] = 6;
-        lastsSectionsIDs[1] = sections0[5].GetComponent<Section>().sectionID;
+        lastsSectionsIDs[1] = sections[5].GetComponent<Section>().sectionID;
     }
 
     // Update is called once per frame
@@ -116,8 +115,8 @@ public class SectionManager : MonoBehaviour
         bool validSection = false;
         int randSection = -1;
 
-        randSection = Random.Range(0, sections1.Length);
-        Section actualSection = sections1[randSection].GetComponent<Section>();
+        randSection = Random.Range(0, sections.Length);
+        Section actualSection = sections[randSection].GetComponent<Section>();
         if(lastsSectionsIDs[0] != actualSection.sectionID || lastsSectionsIDs[1] != actualSection.sectionID)
         {
             validSection = true;
@@ -125,7 +124,7 @@ public class SectionManager : MonoBehaviour
 
         if (validSection)
         {
-            return sections1[randSection];
+            return sections[randSection];
         }
         return null;
     }
